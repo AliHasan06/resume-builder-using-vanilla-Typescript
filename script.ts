@@ -1,8 +1,8 @@
-document
-  .getElementById("resumeForm")
-  ?.addEventListener("submit", function (event) {
-    event.preventDefault(); 
-    const profilePhoto = document.getElementById("profilePhoto") as HTMLInputElement;
+document.getElementById("resumeForm")?.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const profilePhoto = document.getElementById(
+      "profilePhoto"
+    ) as HTMLInputElement;
     const nameElement = document.getElementById("name") as HTMLInputElement;
     const emailElement = document.getElementById("email") as HTMLInputElement;
     const phoneElement = document.getElementById("phone") as HTMLInputElement;
@@ -15,6 +15,9 @@ document
     const skillsElement = document.getElementById(
       "skills"
     ) as HTMLTextAreaElement;
+const usernameElement = document.getElementById('username') as HTMLInputElement
+
+
 
     if (
       profilePhoto &&
@@ -23,7 +26,8 @@ document
       phoneElement &&
       educationElement &&
       experienceElement &&
-      skillsElement
+      skillsElement &&
+      usernameElement
     ) {
       const Name = nameElement.value;
       const email = emailElement.value;
@@ -32,13 +36,22 @@ document
       const experience = experienceElement.value;
       const skills = skillsElement.value;
 
-      const profilePhotoFile = profilePhoto.files?.[0];
-      const profilePhotoURL = profilePhotoFile ? URL.createObjectURL(profilePhotoFile) : '';
+        const username = usernameElement.value;
+        const uniquePath = `resume/${username.replace(/\s+/g, '_')}_cv.html`
 
-      console.log('Profile Photo URL:', profilePhotoURL); 
+      const profilePhotoFile = profilePhoto.files?.[0];
+      const profilePhotoURL = profilePhotoFile
+        ? URL.createObjectURL(profilePhotoFile)
+        : "";
+
+      console.log("Profile Photo URL:", profilePhotoURL);
       const resumeOutput = `
         <h2>Resume</h2>
-        ${profilePhotoURL ? `<img src="${profilePhotoURL}" alt="Profile Photo" class="profilePicture">` : ""}
+        ${
+          profilePhotoURL
+            ? `<img src="${profilePhotoURL}" alt="Profile Photo" class="profilePicture">`
+            : ""
+        }
         <p><strong>Name:</strong> <span id="edit-name" class="editable">${Name}</span></p>
         <p><strong>Email:</strong> <span id="edit-email" class="editable">${email}</span></p>
         <p><strong>Phone:</strong> <span id="edit-phone" class="editable">${phone}</span></p>
@@ -53,10 +66,18 @@ document
         <p id="edit-skills" class="editable">${skills}</p>
       `;
 
+const downloadLink = document.createElement('a')
+downloadLink.href = `data:text/html;charset=utf-8` + encodeURIComponent(resumeOutput)
+downloadLink.download = uniquePath
+downloadLink.textContent = `Download your 2024 resume`
+
+
+
       const resumeOutputElement = document.getElementById("resumeOutput");
       if (resumeOutputElement) {
         resumeOutputElement.innerHTML = resumeOutput;
-        makeEditable();
+        makeEditable()
+        resumeOutputElement.appendChild(downloadLink);
       } else {
         console.error("The resume output element is missing");
       }
