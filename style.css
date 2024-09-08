@@ -1,92 +1,125 @@
 body {
-  font-family: "Times New Roman", Times, serif;
-  margin: 20px;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
   padding: 0;
-  background-color: #e0e8ee;
+  background-color: #f4f7f6;
+  color: #333;
 }
 
 h1 {
   text-align: center;
-  color: #502c50;
+  color: #4a4a4a;
+  font-weight: 300;
+  margin-top: 40px;
 }
 
 form {
-  max-width: 600px;
-  margin: auto;
-  background-color: #f0f4f8;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  padding: 20px;
+  max-width: 700px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  font-size: 16px;
 }
 
 fieldset {
-  border: 2px solid #3498bd;
-  border-radius: 8px;
-  padding: 20px;
+  border: none;
   margin-bottom: 20px;
-  background-color: aliceblue;
 }
 
 legend {
-  font-weight: bold;
-  text-align: left;
-  color: #2c3e50;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #3498db;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
 }
 
 label {
-  display: block;
-  margin-top: 10px;
-  color: #2c3e50;
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 6px;
 }
 
 input,
 textarea {
-  width: calc(100% - 18px);
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #3498bd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button {
-  display: block;
-  width: 100%;
   padding: 10px;
-  background-color: rgb(46, 217, 239);
-  color: black;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
 }
 
-button:hover {
-  background-color: #66b1e6;
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3498db;
 }
-#resumeOutput {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border: 2px solid #3498bd;
+
+textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #3498db;
+  border: none;
   border-radius: 8px;
-  background-color: aliceblue;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+#resumeOutput {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 #resumeOutput h2 {
-  color: #2c3e50;
+  color: #3498db;
+  text-align: center;
 }
 
 .profilePicture {
   display: block;
-  margin: 0 auto;
-  border: 2px solid #3498bd;
-  box-shadow: 8px 4px 8px rgba(11, 7, 211, 0.5);
+  margin: 20px auto;
+  border: 3px solid #3498db;
   border-radius: 50%;
   width: 150px;
   height: 150px;
   object-fit: cover;
-  background-color: #ddd;
+}
+
+.editable {
+  cursor: pointer;
+  padding: 5px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.editing-input {
+  width: 100%;
+  padding: 6px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
 }
